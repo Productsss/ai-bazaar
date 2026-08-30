@@ -1,1 +1,268 @@
-<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>AI Bazaar</title><style>*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f7f5ff;color:#1d2040}header{padding:18px 6%;color:#fff;background:linear-gradient(120deg,#662cff,#ff3d91,#ff9b2f);display:flex;justify-content:space-between;align-items:center}.logo{font-size:25px;font-weight:900}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav button,.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer}.nav button{background:#ffffff25;color:#fff}.hero{padding:65px 6%;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;background:linear-gradient(135deg,#eee8ff,#fff0f8,#fff8df)}h1{font-size:clamp(44px,7vw,76px);line-height:.95;margin:15px 0}.grad{background:linear-gradient(90deg,#662cff,#ff3d91,#ff8b2f);color:transparent;background-clip:text}.hero p{font-size:19px;line-height:1.6}.btn{background:#662cff;color:#fff}.card{background:#17152d;color:#fff;border-radius:28px;padding:28px;box-shadow:0 25px 60px #4d36a333}.orb{width:85px;height:85px;border-radius:50%;background:linear-gradient(135deg,#713cff,#ff4fa3,#ffad3d);box-shadow:0 0 45px #ff4fa388}.status{color:#80f0ae;font-weight:800}.dot{display:inline-block;width:10px;height:10px;background:#38df88;border-radius:50%;margin-right:7px}section{padding:48px 6%}.title{text-align:center;margin-bottom:30px}.title h2{font-size:35px;margin:0 0 8px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 28px #2c205018}.cover{height:150px;border-radius:15px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:900}.a{background:linear-gradient(135deg,#6330ff,#ad35ff)}.b{background:linear-gradient(135deg,#ff4384,#ff9c32)}.c{background:linear-gradient(135deg,#00a99d,#43cfff)}.d{background:linear-gradient(135deg,#ffc72f,#ff5c6c)}.price{font-size:20px;color:#662cff;font-weight:900}.pill{font-size:12px;color:#662cff;background:#eee8ff;padding:6px 9px;border-radius:20px;font-weight:800}.studio{background:#151329;color:#fff;border-radius:26px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:25px}.studio input,.studio select{width:100%;padding:14px;border-radius:12px;border:0;margin:7px 0 14px}.result{background:#292544;border-radius:18px;padding:20px;min-height:200px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.stat{background:#fff;padding:22px;border-radius:20px}.stat strong{font-size:28px}footer{background:#111027;color:#bbb;text-align:center;padding:30px}@media(max-width:800px){.hero,.studio{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.grid,.stats{grid-template-columns:1fr}.nav{display:none}}</style></head><body><header><div class='logo'>🌈 AI Bazaar</div><div class='nav'><button onclick="go('creator')">AI Creator</button><button onclick="go('market')">Marketplace</button><button onclick="go('dashboard')">Dashboard</button></div></header><main><div class='hero'><div><span class='pill'>🌍 GLOBAL • AI-POWERED</span><h1>Create. Sell.<br><span class='grad'>Automate.</span></h1><p>Build and sell digital products worldwide. AI can help with product ideas, creation, design, pricing, marketing, customer support and delivery.</p><button class='btn' onclick="go('creator')">✨ Start AI Creator</button></div><div class='card'><div class='orb'></div><h2>🤖 AI Autopilot</h2><p>Research → Create → Design → Price → Publish → Market → Deliver → Analyze</p><p class='status'><span class='dot'></span> Ready</p><button class='btn' onclick='auto(this)'>Turn Autopilot ON</button></div></div><section id='creator'><div class='title'><h2>🤖 AI Product Creator</h2><p>Describe what you want to sell.</p></div><div class='studio'><div><label>Niche</label><input id='niche' placeholder='e.g. fitness, business, students'><label>Product type</label><select id='type'><option>eBook</option><option>Planner</option><option>Template Pack</option><option>Course</option><option>Guide</option></select><button class='btn' onclick='createProduct()'>✨ Generate Product Plan</button></div><div class='result' id='result'><h3>AI workspace</h3><p>Your generated product concept will appear here.</p></div></div></section><section id='market'><div class='title'><h2>🛍️ Marketplace</h2><p>Example products your AI store can offer.</p></div><div class='grid'><div class='product'><div class='cover a'>EBOOK</div><span class='pill'>Education</span><h3>30-Day Learning Guide</h3><p>Digital guide + worksheets.</p><div class='price'>$9.99</div></div><div class='product'><div class='cover b'>PLAN</div><span class='pill'>Lifestyle</span><h3>Ultimate Weekly Planner</h3><p>Printable digital planner.</p><div class='price'>$6.99</div></div><div class='product'><div class='cover c'>KIT</div><span class='pill'>Business</span><h3>Business Starter Kit</h3><p>Templates and checklists.</p><div class='price'>$14.99</div></div><div class='product'><div class='cover d'>SOCIAL</div><span class='pill'>Design</span><h3>Social Media Pack</h3><p>Ready-to-edit templates.</p><div class='price'>$11.99</div></div></div></section><section id='dashboard'><div class='title'><h2>📊 AI Dashboard</h2></div><div class='stats'><div class='stat'><strong>24</strong><br>Products</div><div class='stat'><strong>$1,284</strong><br>Example revenue</div><div class='stat'><strong>87</strong><br>Orders</div></div></section></main><footer>🌈 AI Bazaar — Global digital commerce powered by AI.</footer><script>function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}function auto(b){b.textContent='✓ Autopilot ON';b.style.background='#39df88';b.style.color='#111027'}function createProduct(){let n=document.getElementById('niche').value||'your chosen niche',t=document.getElementById('type').value;document.getElementById('result').innerHTML='<h3>✨ AI Product Plan</h3><p><b>'+t+'</b> for <b>'+n+'</b>.</p><p>AI will prepare the title, outline, sales description, cover concept, suggested price and marketing ideas.</p><button class="btn" onclick="alert(\'Prototype ready. Production AI will connect to real generation, payments and delivery services.\')">Publish with AI</button>'}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Bazaar — Digital Products</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:linear-gradient(135deg,#6c2cff,#00b8d9);color:white;padding:28px 18px;text-align:center}
+header h1{margin:0;font-size:34px}
+header p{margin:8px 0 0}
+nav{background:white;padding:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;box-shadow:0 2px 8px #ddd}
+nav button,.buy{border:0;border-radius:20px;padding:10px 16px;cursor:pointer;background:#eee}
+nav button.active,.buy{background:#6c2cff;color:white}
+.container{max-width:1200px;margin:auto;padding:20px}
+.search{width:100%;padding:15px;border:1px solid #ddd;border-radius:12px;font-size:16px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;border-radius:15px;padding:18px;box-shadow:0 3px 12px #ddd}
+.icon{font-size:40px}
+.card h3{margin:8px 0}
+.desc{color:#687386;font-size:14px;min-height:40px}
+.price{font-size:20px;font-weight:bold;margin:12px 0;color:#6c2cff}
+.rating{color:#f5a623}
+.buy{width:100%;font-size:15px}
+#cart{position:fixed;right:15px;bottom:15px;background:#111;color:white;
+padding:15px 20px;border-radius:30px;cursor:pointer;box-shadow:0 4px 15px #999}
+footer{text-align:center;padding:30px;background:#111;color:white;margin-top:40px}
+.modal{display:none;position:fixed;inset:0;background:#0009;align-items:center;justify-content:center;padding:20px}
+.box{background:white;padding:25px;border-radius:18px;max-width:500px;width:100%}
+.box input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px}
+.close{float:right;cursor:pointer;font-size:24px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🛍️ AI Bazaar</h1>
+<p>Your colourful marketplace for premium digital products</p>
+</header>
+
+<nav id="categories"></nav>
+
+<div class="container">
+<input id="search" class="search"
+placeholder="🔎 Search 200+ digital products...">
+
+<div id="count"></div>
+<div id="products" class="grid"></div>
+</div>
+
+<div id="cart">🛒 Cart: <span id="cartCount">0</span></div>
+
+<div id="modal" class="modal">
+<div class="box">
+<span class="close" onclick="closeModal()">×</span>
+<h2>🛒 Your Cart</h2>
+<div id="cartItems"></div>
+<h3>Total: KSh <span id="total">0</span></h3>
+<input id="email" type="email" placeholder="Your email address">
+<button class="buy" onclick="checkout()">Proceed to Payment</button>
+<p style="font-size:12px;color:#777">
+Payments can be connected to your Paystack account using your
+Paystack PUBLIC KEY. Never put your secret key in this website.
+</p>
+</div>
+</div>
+
+<footer>
+<h3>AI Bazaar</h3>
+<p>Premium digital products for creators, students, businesses and entrepreneurs.</p>
+<p>© 2026 AI Bazaar. All rights reserved.</p>
+</footer>
+
+<script>
+
+const categories = [
+"All","AI & Prompts","Business","Marketing","Education",
+"Design","Social Media","Ebooks","Templates","Finance",
+"Productivity","Programming","Career","Health & Fitness",
+"Photography","Video","Music","Kids","Printables","Other"
+];
+
+const names = [
+"Ultimate Starter Pack",
+"Premium Pro Pack",
+"Complete Master Bundle",
+"Professional Toolkit",
+"Ultimate Guide",
+"Advanced Toolkit",
+"Creator Bundle",
+"Business Booster",
+"Digital Success Kit",
+"Expert Collection",
+"Premium Resource Pack"
+];
+
+const icons = {
+"AI & Prompts":"🤖",
+"Business":"💼",
+"Marketing":"📣",
+"Education":"🎓",
+"Design":"🎨",
+"Social Media":"📱",
+"Ebooks":"📚",
+"Templates":"📄",
+"Finance":"💰",
+"Productivity":"⚡",
+"Programming":"💻",
+"Career":"🚀",
+"Health & Fitness":"💪",
+"Photography":"📸",
+"Video":"🎬",
+"Music":"🎵",
+"Kids":"🧒",
+"Printables":"🖨️",
+"Other":"⭐"
+};
+
+let products=[];
+let cart=[];
+
+/* Create 220 products */
+categories.slice(1).forEach((cat,ci)=>{
+  names.forEach((name,ni)=>{
+    products.push({
+      id:ci*11+ni+1,
+      name:name+" — "+cat,
+      category:cat,
+      price:199 + ((ci*73+ni*47)%1800),
+      rating:(4+(ni%2)/2).toFixed(1),
+      description:"Premium "+cat.toLowerCase()+" digital resource for modern creators and professionals."
+    });
+  });
+});
+
+function showCategories(){
+ const nav=document.getElementById("categories");
+ nav.innerHTML=categories.map((c,i)=>
+ `<button class="${i===0?'active':''}" onclick="filterCategory('${c}',this)">
+ ${icons[c]||"🛍️"} ${c}
+ </button>`).join("");
+}
+
+let currentCategory="All";
+
+function display(list=products){
+ const area=document.getElementById("products");
+
+ if(list.length===0){
+   area.innerHTML="<h2>No products found.</h2>";
+ }else{
+   area.innerHTML=list.map(p=>`
+   <div class="card">
+     <div class="icon">${icons[p.category]||"🛍️"}</div>
+     <small>${p.category}</small>
+     <h3>${p.name}</h3>
+     <div class="rating">★★★★★ ${p.rating}</div>
+     <p class="desc">${p.description}</p>
+     <div class="price">KSh ${p.price.toLocaleString()}</div>
+     <button class="buy" onclick="addToCart(${p.id})">
+       🛒 Add to Cart
+     </button>
+   </div>
+   `).join("");
+ }
+
+ document.getElementById("count").innerHTML=
+ `<p><b>${list.length}</b> digital products available</p>`;
+}
+
+function filterCategory(category,button){
+ currentCategory=category;
+
+ document.querySelectorAll("nav button")
+ .forEach(b=>b.classList.remove("active"));
+
+ button.classList.add("active");
+
+ const search=document.getElementById("search").value.toLowerCase();
+
+ let result=products.filter(p=>
+   (category==="All"||p.category===category) &&
+   p.name.toLowerCase().includes(search)
+ );
+
+ display(result);
+}
+
+document.getElementById("search").addEventListener("input",function(){
+ const text=this.value.toLowerCase();
+
+ display(products.filter(p=>
+   (currentCategory==="All"||p.category===currentCategory) &&
+   (p.name.toLowerCase().includes(text) ||
+    p.category.toLowerCase().includes(text))
+ ));
+});
+
+function addToCart(id){
+ const product=products.find(p=>p.id===id);
+ cart.push(product);
+ updateCart();
+
+ alert(product.name+" added to your cart!");
+}
+
+function updateCart(){
+ document.getElementById("cartCount").textContent=cart.length;
+
+ let total=cart.reduce((sum,p)=>sum+p.price,0);
+
+ document.getElementById("total").textContent=
+ total.toLocaleString();
+
+ document.getElementById("cartItems").innerHTML=
+ cart.length===0
+ ? "<p>Your cart is empty.</p>"
+ : cart.map((p,i)=>`
+ <div style="padding:10px 0;border-bottom:1px solid #ddd">
+ ${p.name}<br>
+ <b>KSh ${p.price.toLocaleString()}</b>
+ <button onclick="removeItem(${i})">Remove</button>
+ </div>
+ `).join("");
+}
+
+function removeItem(i){
+ cart.splice(i,1);
+ updateCart();
+}
+
+document.getElementById("cart").onclick=()=>{
+ document.getElementById("modal").style.display="flex";
+ updateCart();
+};
+
+function closeModal(){
+ document.getElementById("modal").style.display="none";
+}
+
+function checkout(){
+ if(cart.length===0){
+   alert("Your cart is empty.");
+   return;
+ }
+
+ const email=document.getElementById("email").value;
+
+ if(!email){
+   alert("Please enter your email address.");
+   return;
+ }
+
+ alert(
+ "Checkout is ready. Next we will connect this button to your Paystack payment system."
+ );
+}
+
+/* Start website */
+showCategories();
+display(products);
+updateCart();
+
+</script>
+</body>
+</html>
