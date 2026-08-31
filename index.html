@@ -1,101 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Bazaar — Digital Products</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:linear-gradient(135deg,#6c2cff,#00b8d9);color:white;padding:28px 18px;text-align:center}
-header h1{margin:0;font-size:34px}
-header p{margin:8px 0 0}
-nav{background:white;padding:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;box-shadow:0 2px 8px #ddd}
-nav button,.buy{border:0;border-radius:20px;padding:10px 16px;cursor:pointer;background:#eee}
-nav button.active,.buy{background:#6c2cff;color:white}
-.container{max-width:1200px;margin:auto;padding:20px}
-.search{width:100%;padding:15px;border:1px solid #ddd;border-radius:12px;font-size:16px;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:white;border-radius:15px;padding:18px;box-shadow:0 3px 12px #ddd}
-.icon{font-size:40px}
-.card h3{margin:8px 0}
-.desc{color:#687386;font-size:14px;min-height:40px}
-.price{font-size:20px;font-weight:bold;margin:12px 0;color:#6c2cff}
-.rating{color:#f5a623}
-.buy{width:100%;font-size:15px}
-#cart{position:fixed;right:15px;bottom:15px;background:#111;color:white;
-padding:15px 20px;border-radius:30px;cursor:pointer;box-shadow:0 4px 15px #999}
-footer{text-align:center;padding:30px;background:#111;color:white;margin-top:40px}
-.modal{display:none;position:fixed;inset:0;background:#0009;align-items:center;justify-content:center;padding:20px}
-.box{background:white;padding:25px;border-radius:18px;max-width:500px;width:100%}
-.box input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px}
-.close{float:right;cursor:pointer;font-size:24px}
-</style>
-</head>
-
-<body>
-
-<header>
-<h1>🛍️ AI Bazaar</h1>
-<p>Your colourful marketplace for premium digital products</p>
-</header>
-
-<nav id="categories"></nav>
-
-<div class="container">
-<input id="search" class="search"
-placeholder="🔎 Search 200+ digital products...">
-
-<div id="count"></div>
-<div id="products" class="grid"></div>
-</div>
-
-<div id="cart">🛒 Cart: <span id="cartCount">0</span></div>
-
-<div id="modal" class="modal">
-<div class="box">
-<span class="close" onclick="closeModal()">×</span>
-<h2>🛒 Your Cart</h2>
-<div id="cartItems"></div>
-<h3>Total: KSh <span id="total">0</span></h3>
-<input id="email" type="email" placeholder="Your email address">
-<button class="buy" onclick="checkout()">Proceed to Payment</button>
-<p style="font-size:12px;color:#777">
-Payments can be connected to your Paystack account using your
-Paystack PUBLIC KEY. Never put your secret key in this website.
-</p>
-</div>
-</div>
-
-<footer>
-<h3>AI Bazaar</h3>
-<p>Premium digital products for creators, students, businesses and entrepreneurs.</p>
-<p>© 2026 AI Bazaar. All rights reserved.</p>
-</footer>
-
-<script>
-
-const categories = [
-"All","AI & Prompts","Business","Marketing","Education",
-"Design","Social Media","Ebooks","Templates","Finance",
-"Productivity","Programming","Career","Health & Fitness",
-"Photography","Video","Music","Kids","Printables","Other"
-];
-
-const names = [
-"Ultimate Starter Pack",
-"Premium Pro Pack",
-"Complete Master Bundle",
-"Professional Toolkit",
-"Ultimate Guide",
-"Advanced Toolkit",
-"Creator Bundle",
-"Business Booster",
-"Digital Success Kit",
-"Expert Collection",
-"Premium Resource Pack"
-];
-
 const icons = {
 "AI & Prompts":"🤖",
 "Business":"💼",
@@ -106,7 +8,480 @@ const icons = {
 "Ebooks":"📚",
 "Templates":"📄",
 "Finance":"💰",
-"Productivity":"⚡",
+"Productivity":"⚡",<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Bazaar - Digital Products</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+}
+
+header{
+  background:linear-gradient(135deg,#6c2cff,#00b8d9);
+  color:white;
+  padding:28px 18px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+  font-size:34px;
+}
+
+header p{
+  margin:8px 0 0;
+}
+
+nav{
+  background:white;
+  padding:12px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 2px 8px #ddd;
+}
+
+nav button{
+  border:0;
+  border-radius:20px;
+  padding:10px 15px;
+  cursor:pointer;
+  background:#eee;
+}
+
+nav button.active,
+nav button:hover{
+  background:#6c2cff;
+  color:white;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.search{
+  width:100%;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+  margin-bottom:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  padding:18px;
+  box-shadow:0 3px 12px #ddd;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+}
+
+.icon{
+  font-size:42px;
+}
+
+.card h3{
+  margin:8px 0;
+}
+
+.desc{
+  color:#687386;
+  font-size:14px;
+  min-height:40px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:bold;
+  margin:12px 0;
+  color:#6c2cff;
+}
+
+.rating{
+  color:#f5a623;
+}
+
+.buy{
+  width:100%;
+  border:0;
+  padding:12px;
+  border-radius:10px;
+  background:#6c2cff;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.buy:hover{
+  background:#4e19c7;
+}
+
+#cart{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  background:#111;
+  color:white;
+  padding:15px 20px;
+  border-radius:30px;
+  cursor:pointer;
+  box-shadow:0 4px 15px #999;
+  z-index:20;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0009;
+  align-items:center;
+  justify-content:center;
+  z-index:30;
+}
+
+.modal-box{
+  background:white;
+  width:92%;
+  max-width:500px;
+  border-radius:18px;
+  padding:25px;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:24px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  margin-top:30px;
+  background:#111;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🛍️ AI Bazaar</h1>
+  <p>Discover premium digital products for work, business and creativity</p>
+</header>
+
+<nav>
+  <button class="active" onclick="filterProducts('All',this)">All</button>
+  <button onclick="filterProducts('AI',this)">AI</button>
+  <button onclick="filterProducts('Business',this)">Business</button>
+  <button onclick="filterProducts('Education',this)">Education</button>
+  <button onclick="filterProducts('Design',this)">Design</button>
+  <button onclick="filterProducts('Marketing',this)">Marketing</button>
+  <button onclick="filterProducts('Finance',this)">Finance</button>
+  <button onclick="filterProducts('Productivity',this)">Productivity</button>
+</nav>
+
+<div class="container">
+
+<input
+  id="search"
+  class="search"
+  type="text"
+  placeholder="🔎 Search 200+ digital products..."
+  oninput="showProducts()"
+>
+
+<div id="products" class="grid"></div>
+
+</div>
+
+<div id="cart" onclick="openCart()">
+🛒 Cart: <span id="cartCount">0</span>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeCart()">×</span>
+    <h2>🛒 Your Cart</h2>
+    <div id="cartItems"></div>
+    <hr>
+    <h3>Total: $<span id="total">0.00</span></h3>
+
+    <button class="buy" onclick="checkout()">
+      💳 Proceed to Payment
+    </button>
+
+    <p style="font-size:13px;color:#687386">
+      Payment will be connected to your Paystack account.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 AI Bazaar</p>
+  <p>Premium Digital Products Marketplace</p>
+</footer>
+
+<script>
+
+const categories = [
+  "AI",
+  "Business",
+  "Education",
+  "Design",
+  "Marketing",
+  "Finance",
+  "Productivity"
+];
+
+const names = [
+  "AI Prompt Pack",
+  "Business Plan Template",
+  "Social Media Kit",
+  "Canva Design Bundle",
+  "Digital Marketing Guide",
+  "Excel Finance Template",
+  "Productivity Planner",
+  "ChatGPT Masterclass",
+  "Online Course Planner",
+  "Instagram Content Pack",
+  "YouTube Creator Kit",
+  "Ebook Writing Template",
+  "Resume Template",
+  "CV Design Bundle",
+  "Invoice Template",
+  "Budget Planner",
+  "Small Business Toolkit",
+  "Email Marketing Pack",
+  "SEO Checklist",
+  "Branding Kit",
+  "Logo Design Pack",
+  "Website Content Pack",
+  "Freelancer Toolkit",
+  "Business Proposal Pack",
+  "Sales Funnel Template",
+  "Affiliate Marketing Guide",
+  "Digital Product Planner",
+  "Online Store Starter Kit",
+  "Customer Service Scripts",
+  "AI Business Assistant"
+];
+
+const icons = [
+  "🤖","💼","📱","🎨","📣","💰","📅","🧠","🎓","📸",
+  "▶️","📕","📄","✨","🧾","💵","🏢","📧","🔎","🏷️",
+  "🎨","🌐","💻","📑","🛒","🚀","📦","🏪","☎️","🤖"
+];
+
+let products = [];
+
+for(let i=1;i<=210;i++){
+
+  const name = names[(i-1)%names.length];
+  const icon = icons[(i-1)%icons.length];
+  const category = categories[(i-1)%categories.length];
+
+  const price = (4.99 + ((i*3.37)%45)).toFixed(2);
+
+  products.push({
+    id:i,
+    name:name + " #" + i,
+    category:category,
+    icon:icon,
+    price:price,
+    rating:(4 + ((i%10)/10)).toFixed(1),
+    description:
+      "Premium digital resource designed to help you save time, grow your skills and achieve better results."
+  });
+}
+
+let cart = [];
+
+function showProducts(){
+
+  const search =
+    document.getElementById("search").value.toLowerCase();
+
+  const box =
+    document.getElementById("products");
+
+  box.innerHTML="";
+
+  const filtered = products.filter(p => {
+
+    const matchesSearch =
+      p.name.toLowerCase().includes(search) ||
+      p.category.toLowerCase().includes(search);
+
+    const currentCategory =
+      document.querySelector("nav button.active").textContent;
+
+    const matchesCategory =
+      currentCategory==="All" ||
+      p.category===currentCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  filtered.forEach(p => {
+
+    box.innerHTML += `
+      <div class="card">
+
+        <div class="icon">${p.icon}</div>
+
+        <h3>${p.name}</h3>
+
+        <div>
+          <small>${p.category}</small>
+        </div>
+
+        <p class="desc">${p.description}</p>
+
+        <div class="rating">
+          ⭐ ${p.rating} / 5
+        </div>
+
+        <div class="price">
+          $${p.price}
+        </div>
+
+        <button
+          class="buy"
+          onclick="addToCart(${p.id})">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+    `;
+  });
+
+  if(filtered.length===0){
+    box.innerHTML="<h3>No products found.</h3>";
+  }
+}
+
+function filterProducts(category,button){
+
+  document
+    .querySelectorAll("nav button")
+    .forEach(b=>b.classList.remove("active"));
+
+  button.classList.add("active");
+
+  showProducts();
+}
+
+function addToCart(id){
+
+  const product =
+    products.find(p=>p.id===id);
+
+  cart.push(product);
+
+  document.getElementById("cartCount")
+    .textContent=cart.length;
+
+  alert(product.name+" added to cart!");
+}
+
+function openCart(){
+
+  const modal =
+    document.getElementById("modal");
+
+  const items =
+    document.getElementById("cartItems");
+
+  items.innerHTML="";
+
+  let total=0;
+
+  if(cart.length===0){
+    items.innerHTML="<p>Your cart is empty.</p>";
+  }
+
+  cart.forEach((p,index)=>{
+
+    total += Number(p.price);
+
+    items.innerHTML += `
+      <p>
+        ${p.icon} ${p.name}
+        — $${p.price}
+        <button onclick="removeItem(${index})">
+          Remove
+        </button>
+      </p>
+    `;
+  });
+
+  document.getElementById("total")
+    .textContent=total.toFixed(2);
+
+  modal.style.display="flex";
+}
+
+function removeItem(index){
+
+  cart.splice(index,1);
+
+  document.getElementById("cartCount")
+    .textContent=cart.length;
+
+  openCart();
+}
+
+function closeCart(){
+
+  document.getElementById("modal")
+    .style.display="none";
+}
+
+function checkout(){
+
+  if(cart.length===0){
+    alert("Your cart is empty.");
+    return;
+  }
+
+  alert(
+    "Payment setup is ready for Paystack integration. " +
+    "Your Paystack public key will be added here."
+  );
+}
+
+showProducts();
+
+</script>
+
+</body>
+</html>
 "Programming":"💻",
 "Career":"🚀",
 "Health & Fitness":"💪",
