@@ -453,40 +453,16 @@ function closeCart(){
     .style.display="none";
 }
 
-function checkout(){
-
-  if(cart.length===0){
-    alert("Your cart is empty.");
-    return;
-  }
-
-  alert(
-    "Payment setup is ready for Paystack integration. " +
-    "Your Paystack public key will be added here."
-  );
-}
-
-showProducts();
-
-</script>
-
-</body>
-</html>
-"Programming":"💻",
-"Career":"🚀",
-"Health & Fitness":"💪",
-"Photography":"📸",
-"Video":"🎬",
-"Music":"🎵",
-"Kids":"🧒",
-"Printables":"🖨️",
-"Other":"⭐"
-};
 
 let products=[];
 let cart=[];
+  /* Create 220 products */
 
-/* Create 220 products */
+
+
+
+
+
 categories.slice(1).forEach((cat,ci)=>{
   names.forEach((name,ni)=>{
     products.push({
