@@ -593,11 +593,26 @@ function checkout(){
    alert("Please enter your email address.");
    return;
  }
+const handler = PaystackPop.setup({
+  key: 'YOUR_PAYSTACK_PUBLIC_KEY',
+  email: email,
+  amount: total * 100,
+  currency: 'KES',
+  callback: function(response) {
+    alert("Payment successful! Reference: " + response.reference);
+    cart = [];
+    updateCart();
+    closeModal();
+  },
+  onClose: function() {
+    alert("Payment window closed.");
+  }
+});
 
- alert(
- "Checkout is ready. Next we will connect this button to your Paystack payment system."
- );
+handler.openIframe();
 }
+ 
+
 
 
 
