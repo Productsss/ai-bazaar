@@ -458,7 +458,42 @@ let products=[];
 let cart=[];
   /* Create 220 products */
 
+const categories = [
+  "All",
+  "Ebooks",
+  "Templates",
+  "AI Tools",
+  "Business",
+  "Marketing",
+  "Education",
+  "Design",
+  "Finance",
+  "Productivity",
+  "Social Media"
+];
 
+const names = [
+  "Starter Guide",
+  "Ultimate Toolkit",
+  "Pro Bundle",
+  "Masterclass",
+  "Complete Pack",
+  "Success Blueprint",
+  "Premium Collection",
+  "Growth Kit",
+  "Expert Guide",
+  "Smart Template",
+  "Digital Bundle",
+  "Business Pack",
+  "Creator Kit",
+  "AI Toolkit",
+  "Marketing Bundle",
+  "Productivity Pack",
+  "Professional Guide",
+  "Success System",
+  "Premium Toolkit",
+  "Ultimate Bundle"
+];
 
 
 
@@ -561,7 +596,7 @@ function updateCart(){
  : cart.map((p,i)=>`
  <div style="padding:10px 0;border-bottom:1px solid #ddd">
  ${p.name}<br>
- <b>KSh ${p.price.toLocaleString()}</b>
+ <b>$${p.price.toLocaleString()}</b>
  <button onclick="removeItem(${i})">Remove</button>
  </div>
  `).join("");
