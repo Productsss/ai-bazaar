@@ -534,7 +534,7 @@ function display(list=products){
      <h3>${p.name}</h3>
      <div class="rating">★★★★★ ${p.rating}</div>
      <p class="desc">${p.description}</p>
-     <div class="price">KSh ${p.price.toLocaleString()}</div>
+     <div class="price">$${p.price.toLocaleString()}</div>
      <button class="buy" onclick="addToCart(${p.id})">
        🛒 Add to Cart
      </button>
