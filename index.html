@@ -239,73 +239,9 @@ footer{
 
 <script>
 
-const categories = [
-  "AI",
-  "Business",
-  "Education",
-  "Design",
-  "Marketing",
-  "Finance",
-  "Productivity"
-];
 
-const names = [
-  "AI Prompt Pack",
-  "Business Plan Template",
-  "Social Media Kit",
-  "Canva Design Bundle",
-  "Digital Marketing Guide",
-  "Excel Finance Template",
-  "Productivity Planner",
-  "ChatGPT Masterclass",
-  "Online Course Planner",
-  "Instagram Content Pack",
-  "YouTube Creator Kit",
-  "Ebook Writing Template",
-  "Resume Template",
-  "CV Design Bundle",
-  "Invoice Template",
-  "Budget Planner",
-  "Small Business Toolkit",
-  "Email Marketing Pack",
-  "SEO Checklist",
-  "Branding Kit",
-  "Logo Design Pack",
-  "Website Content Pack",
-  "Freelancer Toolkit",
-  "Business Proposal Pack",
-  "Sales Funnel Template",
-  "Affiliate Marketing Guide",
-  "Digital Product Planner",
-  "Online Store Starter Kit",
-  "Customer Service Scripts",
-  "AI Business Assistant"
-];
-
-const icons = [
-  "🤖","💼","📱","🎨","📣","💰","📅","🧠","🎓","📸",
-  "▶️","📕","📄","✨","🧾","💵","🏢","📧","🔎","🏷️",
-  "🎨","🌐","💻","📑","🛒","🚀","📦","🏪","☎️","🤖"
-];
-
-let products = [];
-
-for(let i=1;i<=210;i++){
-
-  const name = names[(i-1)%names.length];
-  const icon = icons[(i-1)%icons.length];
-  const category = categories[(i-1)%categories.length];
-
-  const price = (4.99 + ((i*3.37)%45)).toFixed(2);
-
-  products.push({
-    id:i,
-    name:name + " #" + i,
-    category:category,
-    icon:icon,
-    price:price,
-    rating:(4 + ((i%10)/10)).toFixed(1),
-    description:
+  
+  
       "Premium digital resource designed to help you save time, grow your skills and achieve better results."
   });
 }
@@ -374,82 +310,10 @@ return matchesSearch && matchesCategory;
   }
 }
 
-function filterProducts(category,button){
 
-  document
-    .querySelectorAll("nav button")
-    .forEach(b=>b.classList.remove("active"));
 
-  button.classList.add("active");
-
-  showProducts(category);
-}
-
-function addToCart(id){
-
-  const product =
-    products.find(p=>p.id===id);
-
-  cart.push(product);
-
-  document.getElementById("cartCount")
-    .textContent=cart.length;
-
-  alert(product.name+" added to cart!");
-}
-
-function openCart(){
-
-  const modal =
-    document.getElementById("modal");
-
-  const items =
-    document.getElementById("cartItems");
-
-  items.innerHTML="";
-
-  let total=0;
-
-  if(cart.length===0){
-    items.innerHTML="<p>Your cart is empty.</p>";
-  }
-
-  cart.forEach((p,index)=>{
-
-    total += Number(p.price);
-
-    items.innerHTML += `
-      <p>
-        ${p.icon} ${p.name}
-        — $${p.price}
-        <button onclick="removeItem(${index})">
-          Remove
-        </button>
-      </p>
-    `;
-  });
-
-  document.getElementById("total")
-    .textContent=total.toFixed(2);
-
-  modal.style.display="flex";
-}
-
-function removeItem(index){
-
-  cart.splice(index,1);
-
-  document.getElementById("cartCount")
-    .textContent=cart.length;
-
-  openCart();
-}
-
-function closeCart(){
-
-  document.getElementById("modal")
-    .style.display="none";
-}
+  
+  
 
 
 
