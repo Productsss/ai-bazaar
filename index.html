@@ -326,10 +326,8 @@ function showProducts(){
 
     const matchesSearch =
       p.name.toLowerCase().includes(search) ||
-      p.category.toLowerCase().includes(search);
-
-    const currentCategory =
-      document.querySelector("nav button.active").textContent;
+      const activeButton = document.querySelector("nav button.active");
+const currentCategory = activeButton ? activeButton.textContent.trim() : "All";
 
     const matchesCategory =
       currentCategory==="All" ||
