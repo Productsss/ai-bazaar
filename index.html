@@ -329,11 +329,12 @@ function showProducts(){
   p.description.toLowerCase().includes(search);
 
     const matchesCategory =
-      currentCategory==="All" ||
-      p.category===currentCategory;
+      const matchesCategory =
+  currentCategory === "All" ||
+  p.category === currentCategory;
 
-    return matchesSearch && matchesCategory;
-  });
+return matchesSearch && matchesCategory;
+});
 
   filtered.forEach(p => {
 
